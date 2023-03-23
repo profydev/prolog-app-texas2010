@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <GlobalStyle />
           <Component {...pageProps} />
         </NavigationProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
+        <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
       </QueryClientProvider>
     </ThemeProvider>
   );
