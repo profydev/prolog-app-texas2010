@@ -1,3 +1,5 @@
+import capitalize from "lodash/capitalize";
+
 import mockIssues1 from "../fixtures/issues-page-1.json";
 import mockIssues2 from "../fixtures/issues-page-2.json";
 import mockIssues3 from "../fixtures/issues-page-3.json";
@@ -81,6 +83,37 @@ describe("Issue List", () => {
       cy.wait(["@getProjects", "@getIssuesPage2"]);
       cy.wait(1500);
       cy.contains("Page 2 of 3");
+    });
+
+    it.only("verify the issues data", () => {
+      cy.get("table")
+        .find("tbody")
+        .find("tr")
+        .each(($tr, index) => {
+          const issue = mockIssues1.items[index];
+          cy.wrap($tr)
+            .find("td")
+            .then(($tds) => {
+              const firstTd = $tds[0];
+              const secondTd = $tds[1];
+              const thirdTd = $tds[2];
+              const fourthTd = $tds[3];
+
+              cy.wrap(firstTd)
+                .find("[class*=issue-row__ErrorTypeAndMessage]")
+                .should("contain.text", issue.message);
+              cy.wrap(secondTd)
+                .find("div")
+                .should("contain.text", capitalize(issue.level));
+              cy.wrap(thirdTd).should("contain.text", issue.numEvents);
+              cy.wrap(fourthTd).should("contain.text", issue.numUsers);
+
+              cy.wrap([$tds[0], $tds[1], $tds[2], $tds[3]]).should(
+                "have.length",
+                4
+              );
+            });
+        });
     });
   });
 });
