@@ -85,7 +85,7 @@ describe("Issue List", () => {
       cy.contains("Page 2 of 3");
     });
 
-    it.only("verify the issues data", () => {
+    it("verify the issues data", () => {
       cy.get("table")
         .find("tbody")
         .find("tr")
