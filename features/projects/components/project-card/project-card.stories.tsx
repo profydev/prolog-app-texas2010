@@ -1,7 +1,11 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { ProjectCard } from "./project-card";
-import { ProjectLanguage, ProjectStatus } from "@api/projects.types";
+import {
+  ProjectLanguage,
+  ProjectStatus,
+  ProjectApiStaus,
+} from "@api/projects.types";
 
 export default {
   title: "Project/ProjectCard",
@@ -26,7 +30,7 @@ Default.args = {
     language: ProjectLanguage.react,
     numIssues: 420,
     numEvents24h: 721,
-    status: ProjectStatus.critical,
+    status: ProjectApiStaus.critical,
   },
 };
 Default.parameters = {
