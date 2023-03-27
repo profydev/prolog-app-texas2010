@@ -100,7 +100,7 @@ describe("Issue List", () => {
               const fourthTd = $tds[3];
 
               cy.wrap(firstTd)
-                .find("[class*=issue-row__ErrorTypeAndMessage]")
+                .find("div div")
                 .should("contain.text", issue.message);
               cy.wrap(secondTd)
                 .find("div")
