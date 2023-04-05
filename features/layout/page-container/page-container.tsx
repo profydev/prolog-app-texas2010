@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import styled from "styled-components";
 import { SidebarNavigation } from "../sidebar-navigation";
+import { Footer } from "../footer";
 import { color, displayFont, textFont, space, breakpoint } from "@styles/theme";
 
 type PageContainerProps = {
@@ -26,14 +27,14 @@ const Main = styled.main`
 
 const ContentContainer = styled.div`
   min-height: calc(
-    100vh - 2 * ${space(8)} - ${({ theme }) => theme.size.headerHeight}
+    100vh - 2 * ${space(0)} - ${({ theme }) => theme.size.headerHeight}
   );
   margin-top: ${({ theme }) => theme.size.headerHeight};
   padding: ${space(8, 3)};
   background: white;
 
   @media (min-width: ${breakpoint("desktop")}) {
-    min-height: calc(100vh - ${space(3)} - 2 * ${space(8)});
+    min-height: calc(100vh - ${space(2)} - 2 * ${space(16)});
     margin-top: ${space(3)};
     padding: ${space(8)};
     border-top-left-radius: ${space(10)};
@@ -71,6 +72,7 @@ export function PageContainer({ children, title, info }: PageContainerProps) {
           <Info>{info}</Info>
           {children}
         </ContentContainer>
+        <Footer />
       </Main>
     </Container>
   );
